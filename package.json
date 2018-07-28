@@ -1,0 +1,16 @@
+{
+  "author": "Shane Brinkman-Davis Delamore, Imikimi LLC",
+  "dependencies": {
+    "art-build-configurator": "*"
+  },
+  "description": "Caffeine.Script.Compatibility.Test",
+  "license": "ISC",
+  "name": "caffeine-script-compatibility-test",
+  "scripts": {
+    "build": "webpack\nnpm run uglify",
+    "start": "webpack-dev-server --hot --inline --progress",
+    "test": "nn -s;mocha -u tdd",
+    "testInBrowser": "webpack-dev-server --progress",
+    "uglify": "npx uglifyjs build/index.js -c -m --keep-fnames --keep-classnames > build/index.min.js"
+  }
+}

@@ -1,0 +1,39 @@
+global.caffeineScriptCompatible = false
+assert = (isTrue, message) -> throw new Error message ? "expecting true" unless isTrue
+assert.equal = (a, b, message) -> throw new Error message ? "expecting a(#{a}) == b(#{b})" unless a == b
+fooValue = 123
+barValue = 456
+class MyBaseClass
+  constructor: ->
+    @foo = fooValue
+
+class MyDerivedClass extends MyBaseClass
+  @foo: fooValue
+  @bar: barValue
+
+  constructor: ->
+    @bar = barValue
+
+assert.equal MyDerivedClass.name, :MyDerivedClass
+assert.equal
+  Object.keys(MyDerivedClass).sort().join ','
+  "bar,foo"
+
+# argument defaults
+defaultValue = (v = 248) -> v
+assert.equal defaultValue(), 248
+
+# does structuring compile?
+structuring = {foo, bar}
+
+# destructuring
+{foo, bar} = MyDerivedClass
+assert.equal foo, fooValue
+assert.equal bar, barValue
+
+# superclass constructor and child-class constructor
+{foo, bar} = new MyDerivedClass
+assert.equal foo, fooValue
+assert.equal bar, barValue
+console.log caffeineScriptCompatible: true
+global.caffeineScriptCompatible = true
