@@ -7,9 +7,9 @@
   "license": "ISC",
   "name": "caffeine-script-compatibility-test",
   "scripts": {
-    "build": "webpack\nnpm run uglify",
+    "build": "echo webpack\nwebpack\necho uglify\nnpm run uglify\necho GenerateTestBody\ncaf GenerateTestBody",
     "start": "webpack-dev-server --hot --inline --progress",
-    "test": "nn -s;mocha -u tdd",
+    "test": "webpack-dev-server --progress",
     "testInBrowser": "webpack-dev-server --progress",
     "uglify": "npx uglifyjs build/index.js -c -m --keep-fnames --keep-classnames > build/index.min.js"
   }
