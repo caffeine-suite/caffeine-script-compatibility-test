@@ -1,9 +1,0 @@
-fs = require 'fs'
-fs.writeFileSync
-  'TestBody.js'
-
-  "module.exports = " +
-  JSON.stringify
-    fs.readFileSync "./build/index.min.js"
-    .toString()
-  + ";"

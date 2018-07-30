@@ -8,20 +8,6 @@
 npm:
   description: "" Caffeine.Script.Compatibility.Test
   dependencies: {}
-  scripts:
-    uglify:
-      """
-        npx uglifyjs build/index.js -c -m --keep-fnames --keep-classnames > build/index.min.js
-
-    build:
-      """
-        echo webpack
-        webpack
-        echo uglify
-        npm run uglify
-        echo GenerateTestBody
-        caf GenerateTestBody
-
 
 webpack:
   # common properties are merged into each target's properties
@@ -29,5 +15,4 @@ webpack:
 
   # each target's individual properties
   targets:
-    index: {}
     BrowserTest: {}
