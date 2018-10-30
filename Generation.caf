@@ -1,0 +1,33 @@
+import &ArtStandardLib
+###
+  This file exports a JavaScript string. Eval it and it
+  will return true or false depending on if the environment
+  supports enough of ES6 to run raw CaffeineScript.
+
+  Tests for support for:
+    keywords:       class / extends / constructor / super / let
+    interpolation:  `${b}`
+    structuring:    a = {b}
+    destructuring:  {a} = b
+    boundFunction:  () => a
+    spred:          (...a) => f ...a
+
+testJs =
+  ""
+    'use strict';
+    ()=>class F
+    extends Object
+    {constructor(...a)
+    {super(...a);let b=`${1}`,{c}=a,d={b};}}
+
+"""
+  ((function() {
+    try {
+      eval(#{escapeJavascriptString testJs});
+      return true;
+    } catch (error) {
+      return false;
+    }
+  })())
+
+.replace /\n */g ''
